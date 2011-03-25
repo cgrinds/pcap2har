@@ -11,14 +11,14 @@ def header_json_repr(d):
         {
             'name': k,
             'value': v
-        } for k, v in d.iteritems()
+        } for k, v in sorted(d.items(), key=lambda x: (-1*x[1], x[0]))
     ]
 
 def query_json_repr(d):
     # d = {string: [string]}
     # we need to print all values of the list
     output = []
-    for k, l in d.iteritems():
+    for k, l in sorted(d.items(), key=lambda x: (-1*x[1], x[0])):
         for v in l:
             output.append({
                 'name': k,
